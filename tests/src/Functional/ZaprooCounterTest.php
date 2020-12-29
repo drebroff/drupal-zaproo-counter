@@ -5,8 +5,7 @@ namespace Drupal\Tests\zaproo_counter\Functional;
 use Drupal\Tests\BrowserTestBase;
 
 /**
- * Test the functionality of the Zaproo Counter Module
- *
+ * Test the functionality of the Zaproo Counter Module.
  */
 class ZaprooCounterTest extends BrowserTestBase {
 
@@ -27,6 +26,8 @@ class ZaprooCounterTest extends BrowserTestBase {
 
   /**
    * {@inheritdoc}
+   *
+   * @throws \Drupal\Core\Entity\EntityStorageException
    */
   public function setUp() {
     parent::setUp();

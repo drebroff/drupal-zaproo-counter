@@ -11,6 +11,12 @@ use Drupal\Core\Entity\EntityInterface;
 /**
  * Implements hook_ENTITY_TYPE_view().
  *
+ * @param array $build
+ * @param EntityInterface $entity
+ * @param EntityViewDisplayInterface $display
+ * @param $view_mode
+ * @throws \Drupal\Component\Plugin\Exception\InvalidPluginDefinitionException
+ * @throws \Drupal\Component\Plugin\Exception\PluginNotFoundException
  * @see hook_entity_view()
  * @see hook_ENTITY_TYPE_view()
  */
@@ -20,6 +26,7 @@ function zaproo_counter_node_view(array &$build, EntityInterface $entity, Entity
   $config = \Drupal::config('zaproo_counter.settings');
   // Get config value
   $zaproo_counter_state = (bool) $config->get('zaproo_counter_state');
+
 
   if ($zaproo_counter_state) {
     $node = \Drupal::entityTypeManager()->getStorage('node')->load($entity->id());
