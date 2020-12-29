@@ -1,4 +1,4 @@
-MAPBOX_UI module for Drupal
+Zaproo Counter module for Drupal 8
 ---------------------------
 
 * Introduction
