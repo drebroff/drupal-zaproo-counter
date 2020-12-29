@@ -1,0 +1,7 @@
+name: Zaproo Article Counter
+type: module
+description: Zaproo article word counter
+package: Zaproo
+core: 8.x
+dependencies:
+

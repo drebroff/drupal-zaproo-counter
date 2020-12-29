@@ -1,0 +1,5 @@
+zaproo_counter.adminmenu_section:
+  title: 'Zaproo counter'
+  description: 'Enable/disable zaproo counter for "Article" node type.'
+  parent: system.admin_config_system
+  route_name: zaproo_counter.settings

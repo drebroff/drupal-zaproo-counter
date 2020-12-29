@@ -1,0 +1,7 @@
+zaproo_counter.settings:
+  path: '/admin/config/zaproo/settings'
+  defaults:
+    _form: '\Drupal\zaproo_counter\Form\ZaprooAdminForm'
+    _title: 'Zaproo Counter'
+  requirements:
+    _permission: 'administer site configuration'

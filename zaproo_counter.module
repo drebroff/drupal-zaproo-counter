@@ -1,0 +1,45 @@
+<?php
+
+/**
+ * @file
+ * Invoke node entity hook.
+ */
+
+use Drupal\Core\Entity\Display\EntityViewDisplayInterface;
+use Drupal\Core\Entity\EntityInterface;
+
+/**
+ * Implements hook_ENTITY_TYPE_view().
+ *
+ * @see hook_entity_view()
+ * @see hook_ENTITY_TYPE_view()
+ */
+function zaproo_counter_node_view(array &$build, EntityInterface $entity, EntityViewDisplayInterface $display, $view_mode) {
+
+  // Get config name.
+  $config = \Drupal::config('zaproo_counter.settings');
+  // Get config value
+  $zaproo_counter_state = (bool) $config->get('zaproo_counter_state');
+
+  if ($zaproo_counter_state) {
+    $node = \Drupal::entityTypeManager()->getStorage('node')->load($entity->id());
+    $type_name = $node->getType();
+    if ($type_name == "article") {
+      $body_vaue = $node->get('body')->value;
+      $body_word_count = $count = preg_match_all(
+        "/[a-z']+/i", html_entity_decode(strip_tags($body_vaue), ENT_QUOTES)
+      );
+
+      $build['view_count'] = [
+        '#markup' => '<p>' . t('Word count: @words', ['@words' => $body_word_count]) . '</p>',
+        // Disable caching for content.
+        '#cache' => [
+          'max-age' => 0,
+        ],
+      ];
+    }
+
+  }
+
+}
+
